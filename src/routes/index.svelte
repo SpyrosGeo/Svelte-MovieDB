@@ -14,8 +14,13 @@
 </script>
 <script>
     import PopularMovies from '../components/PopularMovies.svelte'
+    import global from '../global.css'
     export let popular;
+
 </script>
 <section>
     <PopularMovies {popular}/>
 </section>
+
+<style>
+</style>
