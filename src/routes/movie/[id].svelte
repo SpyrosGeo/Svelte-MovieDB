@@ -20,4 +20,7 @@
     import MovieDetails from '../../components/MovieDetails.svelte'
     export let movie
 </script>
+<svelte:head>
+    <title>{movie.title}</title>
+</svelte:head>
 <MovieDetails {movie}/>
