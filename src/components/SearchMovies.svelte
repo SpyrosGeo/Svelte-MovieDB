@@ -1,4 +1,6 @@
 <script>
+	import {goto} from '$app/navigation'
+import { each } from 'svelte/internal';
 	let inputValue = '';
 	let active = false;
 
@@ -9,9 +11,13 @@
 			active = false;
 		}
 	};
+
+	const handleSubmit = ()=>{
+		goto(`/search/${inputValue}`)	
+	}
 </script>
 
-<form class="search">
+<form on:submit|preventDefault={handleSubmit}   class="search">
 	{#if !active}
 		<label for="search_movie">Search Movie</label>
 	{/if}
@@ -25,7 +31,7 @@
         class={active?'selected':''}
 	/>
 	{#if inputValue}
-		<button>Search</button>
+		<button type="submit">Search</button>
 	{/if}
 </form>
 

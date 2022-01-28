@@ -2,7 +2,6 @@
 	import MovieCard from './MovieCard.svelte';
 
 	export let popular;
-    console.log(popular);
 </script>
 
 <h3>Popular Movies</h3>
