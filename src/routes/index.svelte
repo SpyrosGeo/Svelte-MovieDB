@@ -13,12 +13,15 @@
     }
 </script>
 <script>
+import SearchMovies from '../components/SearchMovies.svelte';
+
     import PopularMovies from '../components/PopularMovies.svelte'
     // import global from '../global.css'
     export let popular;
 
 </script>
 <section>
+    <SearchMovies/>
     <PopularMovies {popular}/>
 </section>
 
