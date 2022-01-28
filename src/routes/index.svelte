@@ -1,28 +1,29 @@
 <script context="module">
-    const API="b66e2d221f89e3c5e7fcca745925733c"
-    export async function load ({fetch}){
-        const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API}`)
-        const data = await res.json() 
-        if(res.ok){
-            return {
-                props:{
-                    popular:data.results
-                }
-            }
-        }
-    }
+	export async function load({ fetch }) {
+		const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}`);
+		const data = await res.json();
+		if (res.ok) {
+			return {
+				props: {
+					popular: data.results
+				}
+			};
+		}
+	}
 </script>
+
 <script>
-import SearchMovies from '../components/SearchMovies.svelte';
+	
+	import SearchMovies from '../components/SearchMovies.svelte';
+	import PopularMovies from '../components/PopularMovies.svelte';
+	import { fly } from 'svelte/transition';
 
-    import PopularMovies from '../components/PopularMovies.svelte'
-    // import global from '../global.css'
-    export let popular;
-
+	export let popular;
 </script>
-<section>
-    <SearchMovies/>
-    <PopularMovies {popular}/>
+
+<section in:fly={{ y: 50, duration: 500, delay: 500 }} out:fly={{ y: 10, duration: 500 }}>
+	<SearchMovies />
+	<PopularMovies {popular} />
 </section>
 
 <style>

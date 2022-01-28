@@ -1,6 +1,6 @@
 <script>
-	import {goto} from '$app/navigation'
-import { each } from 'svelte/internal';
+	import { goto } from '$app/navigation';
+	import {fly} from 'svelte/transition'
 	let inputValue = '';
 	let active = false;
 
@@ -12,14 +12,14 @@ import { each } from 'svelte/internal';
 		}
 	};
 
-	const handleSubmit = ()=>{
-		goto(`/search/${inputValue}`)	
-	}
+	const handleSubmit = () => {
+		goto(`/search/${inputValue}`);
+	};
 </script>
 
-<form on:submit|preventDefault={handleSubmit}   class="search">
+<form on:submit|preventDefault={handleSubmit} class="search">
 	{#if !active}
-		<label for="search_movie">Search Movie</label>
+		<label in:fly={{y:-10,duration:500}} out:fly={{y:-10,duration:500}} for="search_movie">Search Movie</label>
 	{/if}
 	<!-- bind is like set state -->
 	<input
@@ -28,10 +28,11 @@ import { each } from 'svelte/internal';
 		bind:value={inputValue}
 		name="search_movie"
 		type="text"
-        class={active?'selected':''}
+		class={active ? 'selected' : ''}
 	/>
 	{#if inputValue}
-		<button type="submit">Search</button>
+		<button in:fly={{y:0,duration:500}} out:fly={{x:10, duration:500}} type="submit">Search</button>
+
 	{/if}
 </form>
 

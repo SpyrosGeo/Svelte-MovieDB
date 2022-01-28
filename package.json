@@ -21,6 +21,7 @@
   },
   "type": "module",
   "dependencies": {
+    "dotenv": "^14.3.2",
     "fontawesome-svelte": "^2.0.1"
   }
 }

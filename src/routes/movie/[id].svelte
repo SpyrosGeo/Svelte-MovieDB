@@ -3,9 +3,8 @@
     const API="b66e2d221f89e3c5e7fcca745925733c"
     //params to get movie.id from url
     export async function load({fetch,params}){
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${API}`)
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${import.meta.env.VITE_API_KEY}`)
         const data = await res.json() 
-        console.log(data);
         if(res.ok){
             return {
                 props:{
